@@ -21,16 +21,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-    }// TE5OU OBJET USERDETAIL SERVICE
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();//ay authentification ta5ou user et pswd pardefaut attaque hethe ykoun mawjoud sous forme attaque
+        http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/login/**","/register/**","/user/**").permitAll();
         http.authorizeRequests().antMatchers("/appUsers/**","/appRoles/**").hasAuthority("REDUCTEUR");
         http.authorizeRequests().antMatchers("/posts/**").hasAuthority("REDUCTEUR");
-        http.authorizeRequests().antMatchers("/commentaire/**").hasAuthority("USER");
+        http.authorizeRequests().antMatchers("/commentaire/**").permitAll();
 
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(new JWTAuthenticationFilter(authenticationManager()));

@@ -41,7 +41,7 @@ public class ReducteurController {
     public Reducteur getById(Long id){
         return reducteurRepository.getOne(id);
     }
-    @GetMapping("/update")
+    @PutMapping("/update")
     public Reducteur updatereducteur(@RequestBody Reducteur reducteur, Long id){
         reducteurRepository.saveAndFlush(reducteur);
         return reducteurRepository.saveAndFlush(reducteur);

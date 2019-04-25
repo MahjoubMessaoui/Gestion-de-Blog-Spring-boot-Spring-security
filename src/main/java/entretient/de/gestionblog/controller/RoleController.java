@@ -35,7 +35,7 @@ public class RoleController {
     public AppRole getById(Long id){
         return appRoleRepository.getOne(id);
     }
-    @GetMapping("/update")
+    @PutMapping("/update")
     public AppRole updaterole(@RequestBody AppRole appRole, Long id){
         appRole.setId(id);
         return appRoleRepository.saveAndFlush(appRole);

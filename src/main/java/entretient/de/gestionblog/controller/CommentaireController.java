@@ -37,7 +37,7 @@ public class CommentaireController {
     public Commentaire getById(Long id){
         return commentaireRepository.getOne(id);
     }
-    @GetMapping("/update")
+    @PutMapping("/update")
     public Commentaire updatecommentaire(@RequestBody Commentaire commentaire , Long id){
         commentaire.setId(id);
         return commentaireRepository.saveAndFlush(commentaire);

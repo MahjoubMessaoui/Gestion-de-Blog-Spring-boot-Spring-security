@@ -35,7 +35,7 @@ public class PostsController  {
     public Posts getById(Long ref){
         return postsRepository.getOne(ref);
     }
-    @GetMapping("/update")
+    @PutMapping("/update")
     public Posts updateposts(@RequestBody Posts posts, Long ref){
         posts.setRef(ref);
         return postsRepository.saveAndFlush(posts);

@@ -46,7 +46,7 @@ public class UserController {
 
         return appUserRepository.getOne(id);
     }
-    @GetMapping("/update")
+    @PutMapping("/update")
     public AppUser updateUser(@RequestBody utilisateur user, Long id){
         user.setId(id);
         return appUserRepository.saveAndFlush(user);
